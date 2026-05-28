@@ -1,0 +1,212 @@
+ * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      /* Fondo inmersivo: gradiente dinámico con movimiento */
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e, #c31432, #240b36);
+      background-size: 400% 400%;
+      animation: gradientShift 16s ease infinite;
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      margin: 0;
+      position: relative;
+    }
+
+    /* Efecto de textura suave y viñeta para mayor inmersión */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 50% 30%, rgba(255, 140, 180, 0.12), transparent 75%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 0%; }
+      50% { background-position: 100% 100%; }
+      100% { background-position: 0% 0%; }
+    }
+
+    /* Tarjeta centrada con glassmorphism */
+    .central {
+      position: relative;
+      z-index: 10;
+      max-width: 640px;
+      width: 100%;
+      background: rgba(20, 15, 45, 0.55);
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      border-radius: 2rem;
+      padding: 2.2rem 2rem 2.5rem;
+      text-align: center;
+      box-shadow: 0 30px 45px -20px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.15) inset, 0 0 18px rgba(255, 105, 180, 0.25);
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .central:hover {
+      transform: scale(1.01);
+      box-shadow: 0 35px 50px -18px black, 0 0 0 1px rgba(255, 255, 255, 0.25) inset, 0 0 25px rgba(255, 120, 160, 0.4);
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #FFE6F0, #FFB7C5, #FFD966);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      margin-bottom: 1rem;
+      letter-spacing: -0.3px;
+      text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    h2 {
+      font-size: 1.25rem;
+      font-weight: 400;
+      color: rgba(255, 250, 240, 0.95);
+      margin-bottom: 1.8rem;
+      line-height: 1.4;
+      border-left: 3px solid #ff99c2;
+      padding-left: 0.75rem;
+      display: inline-block;
+      text-align: center;
+      max-width: 90%;
+    }
+
+    .form-control {
+      background: rgba(255, 250, 250, 0.2);
+      border: 1px solid rgba(255, 200, 220, 0.5);
+      color: white;
+      border-radius: 60px;
+      padding: 0.7rem 1rem;
+      font-weight: 500;
+      transition: all 0.2s;
+      backdrop-filter: blur(4px);
+      text-align: center;
+    }
+
+    .form-control:focus {
+      background: rgba(255, 255, 255, 0.25);
+      border-color: #ff99cc;
+      box-shadow: 0 0 0 3px rgba(255, 105, 180, 0.4);
+      color: white;
+      outline: none;
+    }
+
+    .form-control::-webkit-calendar-picker-indicator {
+      filter: invert(0.8);
+      cursor: pointer;
+    }
+
+    /* Botón personalizado */
+    .btn-custom {
+      background: linear-gradient(95deg, #ff8cb3, #ff6a9e);
+      border: none;
+      padding: 0.7rem 2rem;
+      font-weight: 600;
+      border-radius: 60px;
+      color: white;
+      letter-spacing: 0.3px;
+      margin-top: 1rem;
+      transition: all 0.25s;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+      width: auto;
+      min-width: 140px;
+      font-size: 1rem;
+    }
+
+    .btn-custom:hover {
+      background: linear-gradient(95deg, #ff77a8, #ff5288);
+      transform: translateY(-2px);
+      box-shadow: 0 14px 24px rgba(0, 0, 0, 0.3);
+    }
+
+    .btn-custom:active {
+      transform: translateY(1px);
+    }
+
+    /* Contenedor de la fecha */
+    .date-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      margin: 1rem 0 0.5rem;
+    }
+
+    #dateInput {
+      width: 240px;
+      margin: 0 auto;
+    }
+
+    /* Mensaje romántico que aparece cuando la fecha es correcta */
+    .romantic-message {
+      margin-top: 2rem;
+      padding: 1rem 1.2rem;
+      background: rgba(0, 0, 0, 0.55);
+      border-radius: 40px;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #fff0e0;
+      backdrop-filter: blur(5px);
+      border-left: 4px solid #ff99cc;
+      transition: all 0.3s ease;
+      word-break: break-word;
+      text-align: center;
+      animation: fadeInUp 0.5s ease;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 550px) {
+      .central {
+        padding: 1.6rem 1.2rem 2rem;
+      }
+      h1 {
+        font-size: 1.7rem;
+      }
+      h2 {
+        font-size: 1rem;
+      }
+      .btn-custom {
+        padding: 0.55rem 1.2rem;
+        font-size: 0.9rem;
+      }
+      .romantic-message {
+        font-size: 0.95rem;
+      }
+    }
